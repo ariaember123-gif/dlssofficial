@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLSS 5 MEMES</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #f5c518;
+    --orange: #ff6b00;
+    --dark: #080808;
+    --card: #111;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--dark);
+    color: #e0d8cc;
+    font-family: 'Oswald', sans-serif;
+    overflow-x: hidden;
+  }
+  /* CRT lines */
+  body::after {
+    content:'';
+    position:fixed; inset:0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px);
+    pointer-events:none; z-index:9999;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(5,5,5,0.97);
+    border-bottom: 2px solid var(--gold);
+    padding: 0 2rem;
+    height: 58px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo {
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:1.2rem; color:var(--gold);
+    text-shadow: 0 0 20px rgba(245,197,24,0.5);
+    letter-spacing:2px;
+  }
+  nav a {
+    color:#aaa; text-decoration:none;
+    font-family:'Orbitron',sans-serif; font-size:0.65rem;
+    letter-spacing:2px; font-weight:700;
+    transition:color 0.2s;
+  }
+  nav a:hover { color:var(--gold); }
+  .nav-links { display:flex; gap:1.5rem; align-items:center; }
+  #copy-btn {
+    background:var(--gold); color:#000; border:none;
+    padding:6px 14px; font-family:'Orbitron',sans-serif;
+    font-weight:900; font-size:0.6rem; letter-spacing:2px;
+    cursor:pointer; clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+    transition:background 0.2s;
+  }
+  #copy-btn:hover { background:#ffd700; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:100px 2rem 4rem;
+    position:relative; overflow:hidden;
+  }
+  .grid-floor {
+    position:absolute; bottom:0; left:0; right:0; height:45%;
+    background-image:
+      linear-gradient(rgba(245,197,24,0.12) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,197,24,0.12) 1px, transparent 1px);
+    background-size:50px 50px;
+    transform:perspective(500px) rotateX(55deg);
+    transform-origin:bottom;
+    -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,0.5),transparent);
+    mask-image:linear-gradient(to top,rgba(0,0,0,0.5),transparent);
+  }
+  .glow-blob {
+    position:absolute; top:35%; left:50%; transform:translate(-50%,-50%);
+    width:600px; height:280px;
+    background:radial-gradient(ellipse,rgba(245,197,24,0.07) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .stripe {
+    height:6px;
+    background:repeating-linear-gradient(45deg,var(--gold) 0,var(--gold) 10px,transparent 10px,transparent 20px);
+    width:100%;
+  }
+  .badge {
+    display:inline-block;
+    background:rgba(245,197,24,0.08); border:1px solid var(--gold);
+    padding:4px 18px; margin-bottom:2rem;
+    font-family:'Orbitron',sans-serif; font-size:0.62rem; letter-spacing:3px; color:var(--gold);
+    clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  }
+  h1.big {
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:clamp(3.5rem,11vw,8rem);
+    line-height:0.9; color:var(--gold);
+    text-shadow:4px 4px 0 var(--orange), 0 0 60px rgba(245,197,24,0.35);
+    animation:pulse 3s ease-in-out infinite;
+  }
+  h1.sub {
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:clamp(2rem,6vw,4.5rem);
+    color:var(--orange); text-shadow:3px 3px 0 #a04000;
+    margin-bottom:1.5rem;
+  }
+  @keyframes pulse {
+    0%,100%{ text-shadow:4px 4px 0 var(--orange),0 0 60px rgba(245,197,24,0.35); }
+    50%{ text-shadow:4px 4px 0 var(--orange),0 0 100px rgba(245,197,24,0.6); }
+  }
+  .tagline {
+    font-family:'Orbitron',sans-serif; font-size:0.8rem;
+    color:#666; letter-spacing:2px; margin-bottom:2.5rem; line-height:2;
+  }
+  .ca-box {
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--card); border:2px solid var(--gold);
+    padding:10px 20px; cursor:pointer; margin-bottom:2.5rem;
+    transition:background 0.2s; max-width:100%;
+  }
+  .ca-box:hover { background:#1a1a1a; }
+  .ca-label { font-family:'Orbitron',sans-serif; font-size:0.6rem; color:var(--gold); letter-spacing:2px; flex-shrink:0; }
+  .ca-text { font-family:monospace; font-size:clamp(0.5rem,1.4vw,0.75rem); color:#e0d8cc; word-break:break-all; }
+  .btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--gold); color:#000; text-decoration:none;
+    padding:13px 34px; font-family:'Orbitron',sans-serif;
+    font-weight:900; font-size:0.8rem; letter-spacing:2px;
+    clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+    transition:background 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background:#ffd700; }
+  .btn-outline {
+    background:transparent; color:var(--gold); text-decoration:none;
+    padding:13px 34px; font-family:'Orbitron',sans-serif;
+    font-weight:900; font-size:0.8rem; letter-spacing:2px;
+    border:2px solid var(--gold);
+    clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+    transition:background 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { background:rgba(245,197,24,0.1); }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    background:var(--gold); overflow:hidden; padding:9px 0;
+    border-top:2px solid var(--orange); border-bottom:2px solid var(--orange);
+  }
+  .ticker-track {
+    display:flex; gap:3rem; white-space:nowrap;
+    animation:slide 28s linear infinite;
+  }
+  .ticker-track span {
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:0.72rem; letter-spacing:2px; color:#000; flex-shrink:0;
+  }
+  @keyframes slide { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ── SECTIONS ── */
+  section { padding:90px 2rem; }
+  .section-label {
+    font-family:'Orbitron',sans-serif; font-size:0.62rem;
+    letter-spacing:4px; color:var(--gold); margin-bottom:0.8rem;
+  }
+  h2.title {
+    font-family:'Orbitron',sans-serif; font-weight:900;
+    font-size:clamp(2rem,5vw,3.5rem); color:var(--gold);
+    text-shadow:3px 3px 0 var(--orange); margin-bottom:3rem;
+  }
+  .center { text-align:center; }
+  .container { max-width:1080px; margin:0 auto; }
+
+  /* ── STATS ── */
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.2rem; margin-bottom:4rem; }
+  .stat-card {
+    background:var(--card); border:2px solid var(--gold); padding:1.8rem;
+    text-align:center;
+    clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  }
+  .stat-icon { font-size:1.8rem; margin-bottom:0.4rem; }
+  .stat-val { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2.2rem; color:var(--gold); }
+  .stat-key { font-family:'Orbitron',sans-serif; font-size:0.6rem; color:#666; letter-spacing:2px; margin-top:4px; }
+
+  /* ── WANTED CARD ── */
+  .two-col { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:center; }
+  .story p { color:#888; line-height:2; font-size:0.95rem; margin-bottom:1rem; }
+  .wanted-card {
+    background:var(--card); border:3px solid var(--gold); padding:2rem;
+    clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));
+    font-family:'Orbitron',sans-serif;
+  }
+  .wanted-header {
+    font-size:0.58rem; letter-spacing:3px; color:var(--gold);
+    border-bottom:1px solid #222; padding-bottom:8px; margin-bottom:12px;
+  }
+  .wanted-row {
+    display:flex; justify-content:space-between;
+    padding:6px 0; border-bottom:1px solid #1a1a1a; font-size:0.72rem;
+  }
+  .wanted-row span:first-child { color:#555; }
+  .wanted-row span:last-child { color:#e0d8cc; font-weight:700; }
+
+  /* ── TOKENOMICS ── */
+  #tokenomics { background:#050505; }
+  .tok-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:3rem; align-items:center; }
+  svg.donut { filter:drop-shadow(0 0 24px rgba(245,197,24,0.25)); }
+  .tok-list { display:flex; flex-direction:column; gap:0.9rem; }
+  .tok-item {
+    display:flex; align-items:center; gap:1rem;
+    background:var(--card); padding:1rem 1.4rem;
+    clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+  }
+  .tok-bar { width:4px; height:36px; flex-shrink:0; border-radius:2px; }
+  .tok-name { font-family:'Orbitron',sans-serif; font-size:0.72rem; color:#e0d8cc; font-weight:700; flex:1; }
+  .tok-pct { font-family:'Orbitron',sans-serif; font-weight:900; font-size:1.8rem; }
+
+  /* ── PFP ── */
+  #pfp { background:#0a0a0a; }
+  .drop-zone {
+    border:3px dashed var(--gold); background:rgba(245,197,24,0.02);
+    padding:4rem 2rem; text-align:center; cursor:pointer; max-width:560px; margin:0 auto;
+    transition:all 0.2s;
+    clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));
+  }
+  .drop-zone:hover, .drop-zone.drag { border-color:var(--orange); background:rgba(255,107,0,0.04); }
+  .drop-icon { font-size:3.5rem; margin-bottom:0.8rem; }
+  .drop-title { font-family:'Orbitron',sans-serif; font-weight:900; font-size:1.4rem; color:var(--gold); margin-bottom:0.4rem; }
+  .drop-sub { font-family:'Orbitron',sans-serif; font-size:0.62rem; color:#555; letter-spacing:2px; }
+  #file-input { display:none; }
+
+  .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; max-width:860px; margin:0 auto; }
+  .img-card {
+    background:var(--card); overflow:hidden;
+    clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+  }
+  .img-card-header {
+    background:#1a1a1a; padding:9px 14px;
+    font-family:'Orbitron',sans-serif; font-size:0.6rem; letter-spacing:2px;
+    border-bottom:2px solid #2a2a2a;
+    display:flex; align-items:center; gap:8px;
+  }
+  .dot { width:7px; height:7px; border-radius:50%; display:inline-block; }
+  .img-card img { width:100%; display:block; aspect-ratio:1; object-fit:cover; }
+  .img-placeholder {
+    aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+    font-family:'Orbitron',sans-serif; font-size:0.65rem; color:#333; letter-spacing:1px;
+  }
+
+  .spinner {
+    width:50px; height:50px;
+    border:4px solid #1a1a1a; border-top:4px solid var(--gold);
+    border-radius:50%; animation:spin 0.9s linear infinite; margin:0 auto 1rem;
+  }
+  @keyframes spin { to{transform:rotate(360deg)} }
+  .loading-box {
+    aspect-ratio:1; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; background:#080808; gap:0.5rem;
+  }
+  .loading-msg { font-family:'Orbitron',sans-serif; font-size:0.65rem; color:var(--gold); letter-spacing:1px; text-align:center; padding:0 1rem; }
+
+  .error-box {
+    max-width:860px; margin:1.2rem auto 0;
+    background:rgba(192,57,43,0.1); border:2px solid #c0392b;
+    padding:1rem 1.4rem; font-family:'Orbitron',sans-serif;
+    font-size:0.75rem; color:#c0392b; letter-spacing:1px;
+  }
+  .action-row { display:flex; gap:1rem; justify-content:center; margin-top:1.8rem; flex-wrap:wrap; }
+  .btn-reset {
+    background:transparent; border:2px solid #444; color:#777;
+    padding:10px 24px; font-family:'Orbitron',sans-serif;
+    font-size:0.65rem; letter-spacing:2px; cursor:pointer; transition:all 0.2s;
+  }
+  .btn-reset:hover { border-color:var(--gold); color:var(--gold); }
+  .btn-dl {
+    background:var(--gold); color:#000; border:none;
+    padding:12px 32px; font-family:'Orbitron',sans-serif;
+    font-weight:900; font-size:0.8rem; letter-spacing:2px; cursor:pointer;
+    clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
+    transition:background 0.2s;
+  }
+  .btn-dl:hover { background:#ffd700; }
+
+  /* ── HOW TO BUY ── */
+  #buy { background:#050505; }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.2rem; margin-bottom:3rem; }
+  .step {
+    background:var(--card); border:2px solid #222; padding:1.8rem;
+    clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
+    transition:border-color 0.2s;
+  }
+  .step:hover { border-color:var(--gold); }
+  .step-num { font-family:'Orbitron',sans-serif; font-weight:900; font-size:2.5rem; color:rgba(245,197,24,0.12); line-height:1; margin-bottom:0.3rem; }
+  .step-icon { font-size:1.8rem; margin-bottom:0.6rem; }
+  .step h3 { font-family:'Orbitron',sans-serif; font-size:1rem; color:var(--gold); margin-bottom:0.6rem; }
+  .step p { color:#777; font-size:0.88rem; line-height:1.9; }
+
+  /* ── FOOTER ── */
+  footer {
+    background:#050505; border-top:2px solid var(--gold);
+    padding:3rem 2rem; text-align:center;
+  }
+  .footer-logo { font-family:'Orbitron',sans-serif; font-weight:900; font-size:1.6rem; color:var(--gold); text-shadow:2px 2px 0 var(--orange); margin-bottom:0.5rem; }
+  .footer-sub { font-family:'Orbitron',sans-serif; font-size:0.58rem; letter-spacing:3px; color:#333; margin-bottom:1.5rem; }
+  .disclaimer { font-family:'Orbitron',sans-serif; font-size:0.56rem; color:#2a2a2a; max-width:580px; margin:0 auto; line-height:2; }
+
+  @media(max-width:600px) {
+    .nav-links a { display:none; }
+    .compare-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">DLSS 5 MEMES</div>
+  <div class="nav-links">
+    <a href="#about">ABOUT</a>
+    <a href="#tokenomics">TOKENOMICS</a>
+    <a href="#pfp">PFP</a>
+    <a href="#buy">BUY</a>
+    <button id="copy-btn" onclick="copyCA()">COPY CA</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="grid-floor"></div>
+  <div class="glow-blob"></div>
+  <div style="position:relative;z-index:1;width:100%">
+    <div class="stripe" style="position:absolute;top:-80px;left:0;right:0"></div>
+    <div class="badge">⭐⭐⭐⭐⭐ &nbsp; WANTED LEVEL: MAX</div>
+    <h1 class="big">DLSS 5</h1>
+    <h1 class="sub">MEMES</h1>
+    <p class="tagline">Low poly. High gains. San Andreas energy on Solana.</p>
+    <div class="ca-box" onclick="copyCA()">
+      <span class="ca-label">CA:</span>
+      <span class="ca-text">2KGmEy1MSNVUvkvXW3dzPgG6oPiEXD2NxdPte7KApump</span>
+      <span id="ca-icon">📋</span>
+    </div>
+    <div class="btns">
+      <a href="https://pump.fun/coin/2KGmEy1MSNVUvkvXW3dzPgG6oPiEXD2NxdPte7KApump" target="_blank" class="btn-primary">BUY ON PUMP.FUN</a>
+      <a href="#pfp" class="btn-outline">🎮 GET YOUR PFP</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="background:#0a0a0a">
+  <div class="container">
+    <div class="center"><div class="section-label">[ MISSION BRIEFING ]</div><h2 class="title">WHAT IS DLSS 5 MEMES?</h2></div>
+    <div class="stats">
+      <div class="stat-card"><div class="stat-icon">🏦</div><div class="stat-val">1B</div><div class="stat-key">TOTAL SUPPLY</div></div>
+      <div class="stat-card"><div class="stat-icon">🔥</div><div class="stat-val">0%</div><div class="stat-key">DEV TAX</div></div>
+      <div class="stat-card"><div class="stat-icon">🔒</div><div class="stat-val">LOCKED</div><div class="stat-key">LIQUIDITY</div></div>
+      <div class="stat-card"><div class="stat-icon">💸</div><div class="stat-val">0/0</div><div class="stat-key">BUY/SELL TAX</div></div>
+    </div>
+    <div class="two-col">
+      <div class="story">
+        <h3 style="font-family:'Orbitron',sans-serif;font-size:1.8rem;color:var(--orange);margin-bottom:1.2rem">THE STORY</h3>
+        <p>Born in the streets of San Andreas, DLSS 5 MEMES is the meme coin that runs on nostalgia and pure chaos. PS2 graphics, infinite gains, zero taxes.</p>
+        <p>Built on Solana for lightning-fast transactions. The whole hood is buying in — are you gonna let CJ ride without you?</p>
+      </div>
+      <div class="wanted-card">
+        <div class="wanted-header">⚠ SOLANA POLICE — MOST WANTED</div>
+        <div class="wanted-row"><span>ALIAS</span><span>DLSS 5 MEMES</span></div>
+        <div class="wanted-row"><span>CHAIN</span><span>SOLANA</span></div>
+        <div class="wanted-row"><span>PLATFORM</span><span>PUMP.FUN</span></div>
+        <div class="wanted-row"><span>CHARGES</span><span>Mooning Without Permit</span></div>
+        <div class="wanted-row"><span>REWARD</span><span>10,000x or Prison</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics">
+  <div class="container">
+    <div class="center"><div class="section-label">[ FINANCIAL INTEL ]</div><h2 class="title">TOKENOMICS</h2></div>
+    <div class="tok-grid">
+      <div style="display:flex;justify-content:center">
+        <svg class="donut" viewBox="0 0 200 200" width="260" height="260">
+          <!-- 80% community gold -->
+          <path d="M100,20 A80,80,0,1,1,99.99,20 L100,55 A45,45,0,1,0,100.01,55 Z" fill="#f5c518" opacity="0.9"/>
+          <!-- 10% LP orange, starts at 288deg -->
+          <path d="M100,20 A80,80,0,0,1,178.5,133 L152,116 A45,45,0,0,0,100,55 Z" fill="#ff6b00" opacity="0.9"/>
+          <!-- 5% dev green -->
+          <path d="M178.5,133 A80,80,0,0,1,140,167 L122,148 A45,45,0,0,0,152,116 Z" fill="#27ae60" opacity="0.9"/>
+          <!-- 5% marketing blue -->
+          <path d="M140,167 A80,80,0,0,1,99.99,180 L100,145 A45,45,0,0,0,122,148 Z" fill="#1a6fa0" opacity="0.9"/>
+          <circle cx="100" cy="100" r="43" fill="#050505"/>
+          <text x="100" y="95" text-anchor="middle" fill="#f5c518" font-size="18" font-family="Orbitron" font-weight="900">1B</text>
+          <text x="100" y="112" text-anchor="middle" fill="#555" font-size="6.5" font-family="Orbitron" letter-spacing="1.5">TOTAL SUPPLY</text>
+        </svg>
+      </div>
+      <div class="tok-list">
+        <div class="tok-item"><div class="tok-bar" style="background:#f5c518"></div><span class="tok-name">Community &amp; Memes</span><span class="tok-pct" style="color:#f5c518">80%</span></div>
+        <div class="tok-item"><div class="tok-bar" style="background:#ff6b00"></div><span class="tok-name">Liquidity Pool</span><span class="tok-pct" style="color:#ff6b00">10%</span></div>
+        <div class="tok-item"><div class="tok-bar" style="background:#27ae60"></div><span class="tok-name">Dev Wallet</span><span class="tok-pct" style="color:#27ae60">5%</span></div>
+        <div class="tok-item"><div class="tok-bar" style="background:#1a6fa0"></div><span class="tok-name">Marketing</span><span class="tok-pct" style="color:#1a6fa0">5%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PFP GENERATOR -->
+<section id="pfp">
+  <div class="container">
+    <div class="center">
+      <div class="section-label">[ CHARACTER CREATION ]</div>
+      <h2 class="title">GTA PFP GENERATOR</h2>
+      <p style="font-family:'Orbitron',sans-serif;font-size:0.75rem;color:#666;letter-spacing:1px;max-width:500px;margin:0 auto 3rem;line-height:2">Upload your photo — get transformed into a PS2-era GTA San Andreas character.</p>
+    </div>
+
+    <!-- Drop Zone -->
+    <div id="drop-zone" class="drop-zone" onclick="document.getElementById('file-input').click()" ondrop="onDrop(event)" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)">
+      <div class="drop-icon">📸</div>
+      <div class="drop-title">DROP YOUR PHOTO HERE</div>
+      <div class="drop-sub">OR CLICK TO BROWSE &nbsp;·&nbsp; JPG PNG WEBP &nbsp;·&nbsp; MAX 10MB</div>
+    </div>
+    <input type="file" id="file-input" accept="image/*" onchange="onFileSelect(event)">
+
+    <!-- Compare View (hidden initially) -->
+    <div id="compare-view" style="display:none">
+      <div class="compare-grid">
+        <!-- Original -->
+        <div class="img-card">
+          <div class="img-card-header" style="color:#888">
+            <span class="dot" style="background:#444"></span> ORIGINAL
+          </div>
+          <img id="input-img" src="" alt="Original">
+        </div>
+        <!-- Output -->
+        <div class="img-card" id="output-card">
+          <div class="img-card-header" id="output-header" style="color:#888">
+            <span class="dot" id="output-dot" style="background:#444"></span>
+            <span id="output-label">GTA CHARACTER</span>
+          </div>
+          <div id="output-body">
+            <div class="img-placeholder">AWAITING TRANSFORMATION</div>
+          </div>
+        </div>
+      </div>
+      <div id="error-msg" class="error-box" style="display:none"></div>
+      <div class="action-row">
+        <button class="btn-reset" onclick="resetPFP()">↩ UPLOAD DIFFERENT PHOTO</button>
+        <button class="btn-dl" id="dl-btn" style="display:none" onclick="downloadOutput()">⬇ DOWNLOAD PFP</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW TO BUY -->
+<section id="buy">
+  <div class="container">
+    <div class="center"><div class="section-label">[ HEIST INSTRUCTIONS ]</div><h2 class="title">HOW TO BUY</h2></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div class="step-icon">💳</div><h3>GET A WALLET</h3><p>Download Phantom or Solflare. Available on iOS, Android &amp; Chrome.</p></div>
+      <div class="step"><div class="step-num">02</div><div class="step-icon">◎</div><h3>BUY SOLANA</h3><p>Purchase SOL from Coinbase, Binance, or Kraken, then send to your wallet.</p></div>
+      <div class="step"><div class="step-num">03</div><div class="step-icon">🔄</div><h3>GO TO PUMP.FUN</h3><p>Visit pump.fun and search DLSS 5 MEMES or paste the CA directly.</p></div>
+      <div class="step"><div class="step-num">04</div><div class="step-icon">🚀</div><h3>SWAP &amp; HODL</h3><p>Swap SOL for DLSS5MEMES. Set slippage 5–15%. Hold for the moon.</p></div>
+    </div>
+    <div style="text-align:center">
+      <a href="https://pump.fun/coin/2KGmEy1MSNVUvkvXW3dzPgG6oPiEXD2NxdPte7KApump" target="_blank" class="btn-primary" style="font-size:0.9rem;padding:16px 50px">🚀 BUY DLSS5MEMES NOW</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="stripe" style="margin-bottom:2rem"></div>
+  <div class="footer-logo">DLSS 5 MEMES</div>
+  <div class="footer-sub">GROOVE STREET — SOLANA BLOCKCHAIN</div>
+  <div class="disclaimer">⚠ DISCLAIMER: DLSS 5 MEMES is a meme coin for entertainment only. Not financial advice. Crypto investments carry risk. DYOR. Not affiliated with Rockstar Games.</div>
+  <div style="font-family:'Orbitron',sans-serif;font-size:0.55rem;color:#222;margin-top:1.5rem">© 2025 DLSS 5 MEMES · CA: 2KGmEy1MSNVUvkvXW3dzPgG6oPiEXD2NxdPte7KApump</div>
+</footer>
+
+<script src="generate.js"></script>
+<script>
+  const CA = '2KGmEy1MSNVUvkvXW3dzPgG6oPiEXD2NxdPte7KApump';
+
+  // ── Ticker ────────────────────────────────────────────────────────────────
+  const ITEMS = ['🎮 LOW POLY HIGH GAINS','💰 BUY DLSS5MEMES','⭐ WANTED LEVEL MAX','🚀 TO THE MOON CJ','🔫 GROVE STREET FINANCE','💎 DIAMOND HANDS ONLY','🎮 PS2 ERA PROFITS','🏆 RESPECT EARNED','⚡ SOLANA SPEED','🌟 MEME COIN OF THE YEAR'];
+  const track = document.getElementById('ticker');
+  [...ITEMS,...ITEMS].forEach(t => { const s = document.createElement('span'); s.textContent = t; track.appendChild(s); });
+
+  // ── Copy CA ───────────────────────────────────────────────────────────────
+  function copyCA() {
+    navigator.clipboard.writeText(CA);
+    document.getElementById('copy-btn').textContent = '✓ COPIED';
+    document.getElementById('ca-icon').textContent = '✅';
+    setTimeout(() => { document.getElementById('copy-btn').textContent = 'COPY CA'; document.getElementById('ca-icon').textContent = '📋'; }, 2000);
+  }
+
+  // ── PFP Generator ─────────────────────────────────────────────────────────
+  let outputImageUrl = null;
+
+  function onDragOver(e) { e.preventDefault(); document.getElementById('drop-zone').classList.add('drag'); }
+  function onDragLeave() { document.getElementById('drop-zone').classList.remove('drag'); }
+  function onDrop(e) { e.preventDefault(); onDragLeave(); const f = e.dataTransfer.files[0]; if(f) processFile(f); }
+  function onFileSelect(e) { const f = e.target.files[0]; if(f) processFile(f); }
+
+  function processFile(file) {
+    if (!file.type.startsWith('image/')) return showError('Only image files are supported.');
+    if (file.size > 10 * 1024 * 1024) return showError('Image must be under 10MB.');
+
+    // Show preview
+    const reader = new FileReader();
+    reader.onload = e => {
+      document.getElementById('input-img').src = e.target.result;
+      document.getElementById('drop-zone').style.display = 'none';
+      document.getElementById('compare-view').style.display = 'block';
+      startGeneration(file);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function startGeneration(file) {
+    outputImageUrl = null;
+    document.getElementById('dl-btn').style.display = 'none';
+    document.getElementById('error-msg').style.display = 'none';
+    setOutputLoading(true);
+    setLoadingMsg('📤 Reading image...');
+
+    // Read file as base64 — fal.ai accepts data URIs directly, no upload step needed
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const base64DataUri = e.target.result; // data:image/jpeg;base64,...
+      try {
+        await generateGTA(base64DataUri);
+      } catch(err) {
+        showError(err.message || 'Generation failed.');
+        setOutputLoading(false);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  async function generateGTA(base64DataUri) {
+    setLoadingMsg('🎮 Applying GTA San Andreas style...');
+    const genRes = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imageUrl: base64DataUri }),
+    });
+    const genData = await genRes.json();
+    if (!genRes.ok) throw new Error(genData.error || 'Generation failed.');
+
+    const outUrl = genData.outputUrl;
+    if (!outUrl) throw new Error('No output image returned.');
+
+    outputImageUrl = outUrl;
+    setOutputLoading(false);
+    const body = document.getElementById('output-body');
+    body.innerHTML = `<img src="${outUrl}" alt="GTA character">`;
+    setOutputActive(true);
+    document.getElementById('dl-btn').style.display = 'inline-block';
+  }
+
+  function setOutputLoading(on) {
+    const body = document.getElementById('output-body');
+    const header = document.getElementById('output-header');
+    const dot = document.getElementById('output-dot');
+    const label = document.getElementById('output-label');
+    const card = document.getElementById('output-card');
+    if(on) {
+      card.style.borderColor = 'var(--orange)'; header.style.color = 'var(--orange)'; dot.style.background = 'var(--orange)';
+      label.textContent = 'GENERATING...';
+      body.innerHTML = `<div class="loading-box"><div class="spinner"></div><div class="loading-msg" id="loading-msg">🎮 Spawning your character...</div></div>`;
+    } else {
+      card.style.borderColor = ''; header.style.color = ''; dot.style.background = '#444';
+      label.textContent = 'GTA CHARACTER';
+    }
+  }
+
+  function setOutputActive(on) {
+    const card = document.getElementById('output-card');
+    const header = document.getElementById('output-header');
+    const dot = document.getElementById('output-dot');
+    if(on) { card.style.borderColor = 'var(--gold)'; header.style.color = 'var(--gold)'; dot.style.background = 'var(--gold)'; }
+  }
+
+  function setLoadingMsg(msg) {
+    const el = document.getElementById('loading-msg');
+    if(el) el.textContent = msg;
+  }
+
+  function showError(msg) {
+    const el = document.getElementById('error-msg');
+    el.textContent = '⚠ ERROR: ' + msg;
+    el.style.display = 'block';
+  }
+
+  function resetPFP() {
+    outputImageUrl = null;
+    document.getElementById('drop-zone').style.display = 'block';
+    document.getElementById('compare-view').style.display = 'none';
+    document.getElementById('file-input').value = '';
+    document.getElementById('error-msg').style.display = 'none';
+    document.getElementById('dl-btn').style.display = 'none';
+  }
+
+  function downloadOutput() {
+    if (!outputImageUrl) return;
+    const a = document.createElement('a');
+    a.href = outputImageUrl;
+    a.download = 'dlss5memes-gta-pfp.png';
+    a.target = '_blank';
+    a.click();
+  }
+</script>
+
+</body>
+</html>
