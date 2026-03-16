@@ -417,7 +417,7 @@
     <div class="center">
       <div class="section-label">[ CHARACTER CREATION ]</div>
       <h2 class="title">DLSS 5 PFP GENERATOR</h2>
-      <p style="font-family:'Orbitron',sans-serif;font-size:0.75rem;color:#666;letter-spacing:1px;max-width:500px;margin:0 auto 3rem;line-height:2">Upload your photo — get transformed into a PS2-era GTA San Andreas character.</p>
+      <p style="font-family:'Orbitron',sans-serif;font-size:0.75rem;color:#666;letter-spacing:1px;max-width:500px;margin:0 auto 3rem;line-height:2">Upload your photo — get transformed into a DLSS 5 Filter of NVIDIA.</p>
     </div>
 
     <!-- Drop Zone -->
@@ -548,7 +548,7 @@
   }
 
   async function generateGTA(base64DataUri) {
-    setLoadingMsg('🎮 Applying GTA San Andreas style...');
+    setLoadingMsg('🎮 Applying DLSS 5 ...');
     const genRes = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
